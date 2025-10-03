@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Mẹ Yêu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fef5f1 0%, #f9e8e0 50%, #fef5f1 100%);
+            color: #3d2e2e;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: fixed;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: float 8s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header section */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            color: #8b5a5a;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInDown 1s ease forwards;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #a67c7c;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Photo section */
+        .photo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+
+        .photo-frame {
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: white;
+            padding: 1.5rem;
+            box-shadow: 0 20px 60px rgba(139, 90, 90, 0.15);
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 100%;
+            background: #f5e8e4;
+            border-radius: 2px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            color: #a67c7c;
+            padding: 2rem;
+        }
+
+        .photo-placeholder p {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Decorative corners */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #d4a5a5;
+        }
+
+        .corner.top-left {
+            top: 0.5rem;
+            left: 0.5rem;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner.top-right {
+            top: 0.5rem;
+            right: 0.5rem;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .corner.bottom-left {
+            bottom: 0.5rem;
+            left: 0.5rem;
+            border-right: none;
+            border-top: none;
+        }
+
+        .corner.bottom-right {
+            bottom: 0.5rem;
+            right: 0.5rem;
+            border-left: none;
+            border-top: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Message section */
+        .message-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.9s forwards;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(139, 90, 90, 0.1);
+        }
+
+        .message-box h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: #8b5a5a;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .message-box p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.8;
+            color: #5a4545;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #a67c7c;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Wishes section */
+        .wishes-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+
+        .wish-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(139, 90, 90, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 90, 90, 0.15);
+        }
+
+        .wish-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .wish-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #8b5a5a;
+            margin-bottom: 0.5rem;
+        }
+
+        .wish-card p {
+            font-size: 0.95rem;
+            color: #6a5555;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards;
+        }
+
+        .date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #a67c7c;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .photo-frame {
+                max-width: 350px;
+            }
+
+            .message-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .wishes-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* File input styling */
+        .upload-section {
+            text-align: center;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.9s forwards;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #8b5a5a;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(139, 90, 90, 0.3);
+        }
+
+        .upload-btn:hover {
+            background: #a67c7c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 90, 90, 0.4);
+        }
+
+        #photoInput {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="hearts-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>Chúc Mừng Sinh Nhật</h1>
+            <p class="subtitle">MẸ YÊU THƯƠNG</p>
+        </header>
+
+        <div class="upload-section">
+            <label for="photoInput" class="upload-btn">📷 Thêm Ảnh Mẹ</label>
+            <input type="file" id="photoInput" accept="image/*">
+        </div>
+
+        <div class="photo-section">
+            <div class="photo-frame">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                
+                <div class="photo-container" id="photoContainer">
+                    <div class="photo-placeholder">
+                        <div class="upload-icon">🌸</div>
+                        <p>Nhấn nút "Thêm Ảnh Mẹ" ở trên để thêm ảnh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-section">
+            <div class="message-box">
+                <h2>Lời Chúc Từ Trái Tim</h2>
+                <p>
+                    Mẹ yêu quý,
+                </p>
+                <p>
+                    Trong ngày sinh nhật đặc biệt này, con muốn gửi đến mẹ những lời chúc tốt đẹp nhất. 
+                    Cảm ơn mẹ vì đã luôn yêu thương, chăm sóc và dành cho con tất cả những gì tốt đẹp nhất.
+                </p>
+                <p>
+                    Mẹ là người phụ nữ tuyệt vời nhất, là nguồn cảm hứng và là chỗ dựa vững chắc của con. 
+                    Con chúc mẹ luôn mạnh khỏe, hạnh phúc, và tràn đầy niềm vui trong cuộc sống.
+                </p>
+                <p>
+                    Mãi mãi yêu mẹ! ❤️
+                </p>
+                <p class="signature">— Con yêu của mẹ</p>
+            </div>
+        </div>
+
+        <div class="wishes-section">
+            <div class="wish-card">
+                <div class="wish-icon">💖</div>
+                <h3>Sức Khỏe</h3>
+                <p>Chúc mẹ luôn dồi dào sức khỏe, tràn đầy năng lượng và niềm vui mỗi ngày</p>
+            </div>
+            <div class="wish-card">
+                <div class="wish-icon">🌟</div>
+                <h3>Hạnh Phúc</h3>
+                <p>Chúc mẹ luôn tươi cười, hạnh phúc và được bao quanh bởi những điều tốt đẹp</p>
+            </div>
+            <div class="wish-card">
+                <div class="wish-icon">🌺</div>
+                <h3>Thanh Xuân</h3>
+                <p>Chúc mẹ mãi trẻ trung, xinh đẹp và rạng rỡ như những bông hoa đang nở</p>
+            </div>
+            <div class="wish-card">
+                <div class="wish-icon">✨</div>
+                <h3>Bình An</h3>
+                <p>Chúc mẹ luôn được bình an, may mắn và thuận lợi trong mọi việc</p>
+            </div>
+        </div>
+
+        <footer>
+            <p class="date">🎂 Sinh Nhật Vui Vẻ 🎂</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const hearts = ['💖', '💝', '🌸', '🌺', '🎀', '✨'];
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Generate hearts periodically
+        setInterval(createHeart, 800);
+
+        // Initial hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+
+        // Photo upload functionality
+        const photoInput = document.getElementById('photoInput');
+        const photoContainer = document.getElementById('photoContainer');
+
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    photoContainer.innerHTML = `<img src="${event.target.result}" alt="Mẹ yêu">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Add parallax effect on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach(heart => {
+                const speed = 0.5;
+                heart.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add hover effect to message box
+        const messageBox = document.querySelector('.message-box');
+        messageBox.addEventListener('mousemove', function(e) {
+            const rect = messageBox.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 30;
+            const rotateY = (centerX - x) / 30;
+            
+            messageBox.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        messageBox.addEventListener('mouseleave', function() {
+            messageBox.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    </script>
+</body>
+</html>
